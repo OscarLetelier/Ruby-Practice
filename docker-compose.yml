@@ -1,0 +1,8 @@
+services:
+  ruby_env:
+    build: .
+    # Sincroniza tu carpeta local con la carpeta /app del contenedor
+    volumes:
+      - .:/app
+    # Mantiene el contenedor vivo en segundo plano para que podamos ejecutado comandos dentro de el
+    command: tail -f /dev/null

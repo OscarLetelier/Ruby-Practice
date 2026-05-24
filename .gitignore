@@ -1,0 +1,54 @@
+# ========================
+# Entorno y Sistema Operativo
+# ========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.bak
+*.tmp
+
+# ========================
+# Editores y Herramientas (VS Code, etc.)
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ========================
+# Docker
+# ========================
+# Si generamos volúmenes locales o backups de BD, no los subimos
+docker/db_data/
+docker/backups/
+
+# ========================
+# Variables de Entorno (¡Seguridad primero!)
+# ========================
+.env
+.env.*
+!.env.example
+
+# ========================
+# Ruby y Rails (Preparándonos para el futuro)
+# ========================
+*.rbc
+capybara-*.html
+.rspec
+/dir
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+/public/assets
+.byebug_history
+/coverage/
+
+# Ignorar dependencias locales si decidieras instalar gems fuera de Docker en el futuro
+/vendor/bundle/
