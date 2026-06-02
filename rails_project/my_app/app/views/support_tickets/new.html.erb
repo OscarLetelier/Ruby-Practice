@@ -1,6 +1,16 @@
 <h1>Create a New Support Ticket</h1>
 
 <%= form_with(model: @ticket) do |form| %>
+  <% if @ticket.errors.any? %>
+    <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px;">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   
   <div style="margin-bottom: 10px;">
     <%= form.label :customer_name %><br>
