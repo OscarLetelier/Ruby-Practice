@@ -1,0 +1,26 @@
+<h1>Support Tickets Dashboard</h1>
+<p>Here you can view all reported issues.</p>
+
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer Name</th>
+      <th>Issue Description</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.id %></td>
+        <td><strong><%= ticket.customer_name %></strong></td>
+        <td><%= ticket.issue_description %></td>
+        
+        <td style="color: <%= ticket.status == 'Open' ? 'red' : 'green' %>;">
+          <%= ticket.status %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
