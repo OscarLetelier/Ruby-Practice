@@ -18,9 +18,6 @@ services:
       - "3000:3000" # Exponemos el puerto de Rails hacia nuestra máquina local
     depends_on:
       - db
-    environment:
-      # Le decimos a Rails cómo encontrar la base de datos (protocolo://usuario:contraseña@host:puerto/db)
-      DATABASE_URL: postgres://postgres:password@db:5432/postgres
 
 volumes:
   # Volumen persistente para que los datos no se borren si apagamos el contenedor db

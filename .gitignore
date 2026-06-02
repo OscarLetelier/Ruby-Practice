@@ -10,6 +10,7 @@ ehthumbs.db
 Thumbs.db
 *.bak
 *.tmp
+readme.md
 
 # ========================
 # Editores y Herramientas (VS Code, etc.)
