@@ -1,8 +1,27 @@
 services:
-  ruby_env:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      # En producción, estas credenciales vivirán en un archivo .env seguro
+
+  web:
     build: .
-    # Sincroniza tu carpeta local con la carpeta /app del contenedor
+    # Mantenemos el contenedor vivo para poder ejecutar comandos interactivos
+    command: tail -f /dev/null
     volumes:
       - .:/app
-    # Mantiene el contenedor vivo en segundo plano para que podamos ejecutado comandos dentro de el
-    command: tail -f /dev/null
+    ports:
+      - "3000:3000" # Exponemos el puerto de Rails hacia nuestra máquina local
+    depends_on:
+      - db
+    environment:
+      # Le decimos a Rails cómo encontrar la base de datos (protocolo://usuario:contraseña@host:puerto/db)
+      DATABASE_URL: postgres://postgres:password@db:5432/postgres
+
+volumes:
+  # Volumen persistente para que los datos no se borren si apagamos el contenedor db
+  postgres_data:
