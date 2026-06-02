@@ -21,6 +21,23 @@ class SupportTicketsController < ApplicationController
     end
   end
 
+  # 3. Accion EDIT: Busca el ticket en la DB para llenar el formulario
+  def edit
+    @ticket = SupportTicket.find(params[:id])
+  end
+
+  # 4. Accion UPDATE: Procesa los cambios enviados por el usuario
+  def update
+    @ticket = SupportTicket.find(params[:id])
+
+    # En lugar de .new, usamos .update pasando nuestros Strong Parameters
+    if @ticket.update(ticket_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # STRONG PARAMETERS: El filtro de seguridad de la aduana

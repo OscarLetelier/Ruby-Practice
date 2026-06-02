@@ -9,6 +9,7 @@
       <th>Customer Name</th>
       <th>Issue Description</th>
       <th>Status</th>
+      <th>Actions</th> </tr>
     </tr>
   </thead>
   <tbody>
@@ -17,9 +18,11 @@
         <td><%= ticket.id %></td>
         <td><strong><%= ticket.customer_name %></strong></td>
         <td><%= ticket.issue_description %></td>
-        
-        <td style="color: <%= ticket.status == 'Open' ? 'red' : 'green' %>;">
+        <td style="color: <%= ticket.status == 'Open' ? 'red' : (ticket.status == 'Closed' ? 'gray' : 'green') %>;">
           <%= ticket.status %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_support_ticket_path(ticket) %>
         </td>
       </tr>
     <% end %>
