@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   # mándalo al SupportTicketsController y ejecuta la acción 'index'"
   root "support_tickets#index"
 
-  # La ruta que generó nuestro comando anteriormente:
-  get "support_tickets/index"
+  # La magia de Rails: esto genera las 7 rutas estándar del CRUD automáticamente
+  resources :support_tickets
 end

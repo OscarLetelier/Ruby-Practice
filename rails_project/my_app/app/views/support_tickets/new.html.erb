@@ -1,0 +1,27 @@
+<h1>Create a New Support Ticket</h1>
+
+<%= form_with(model: @ticket) do |form| %>
+  
+  <div style="margin-bottom: 10px;">
+    <%= form.label :customer_name %><br>
+    <%= form.text_field :customer_name %>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <%= form.label :issue_description %><br>
+    <%= form.text_area :issue_description %>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <%= form.label :status %><br>
+    <%= form.select :status, ['Open', 'Pending', 'Closed'] %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Ticket" %>
+  </div>
+
+<% end %>
+
+<br>
+<%= link_to 'Back to Dashboard', root_path %>
