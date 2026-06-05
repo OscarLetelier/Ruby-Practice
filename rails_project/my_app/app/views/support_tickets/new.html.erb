@@ -1,8 +1,4 @@
 <h1>Create a New Support Ticket</h1>
-<%= render "form", ticket: @ticket %>
-
-<br>
-<%= link_to 'Back to Dashboard', root_path %>
 
 <%= form_with(model: @ticket) do |form| %>
   <% if @ticket.errors.any? %>
